@@ -22,75 +22,69 @@ app.get('/reset', (_, response)=>{
 
 app.use('/ocean/:name', (request, response)=>{
     const name = request.params.name;
+    let output = { code: 400, data: { data: null, error: `No ocean with name ${name}` } };
     if(request.method === 'GET'){
         const data = database.getOcean(name);
         if(data){
-            response.status(200).send({
+            output = { code: 200, data: {
                 data: data,
-                error: null,
-            });
-        }else{
-            response.status(400).send({
-                data: null,
-                error: `No ocean with name ${name}`,
-            });
+                error: null }
+            };
         }
     }else if(request.method === 'POST'){
         database.addOcean(name);
-        response.status(200).send({
+        output = { code: 200, data: {
             data: database.getOcean(name),
-            error: null,
-        });
+            error: null }
+        };
     }
+
+    response.status(output.code).send(output.data);
 });
 
 app.use('/sea/:oceanname/:name', (request, response)=>{
     const name = request.params.name;
     const oceanname = request.params.oceanname;
+    let output = { code: 400, data: { data: null, error: `No sea with name ${name}` } };
     if(request.method === 'GET'){
         const data = database.getSea(oceanname, name);
         if(data){
-            response.status(200).send({
+            output = { code: 200, data: {
                 data: data,
-                error: null,
-            });
-        }else{
-            response.status(400).send({
-                data: null,
-                error: `No ocean with name ${name}`,
-            });
+                error: null }
+            }
         }
     }else if(request.method === 'POST'){
         database.addSea(oceanname, name);
-        response.status(200).send({
+        output = { code: 200, data: {
             data: database.getSea(oceanname, name),
-            error: null,
-        });
+            error: null }
+        }
     }
+
+    response.status(output.code).send(output.data);
 });
 
 app.use('/river/:oceanname/:seaname/:name', (request, response)=>{
     const name = request.params.name;
     const oceanname = request.params.oceanname;
     const seaname = request.params.seaname;
+    let output  = { code: 400, data: { data: null, error: `No river with name ${name}` } };
     if(request.method === 'GET'){
         const data = database.getRiver(oceanname, seaname, name);
         if(data){
-            response.status(200).send({
+            output = { code: 200, data: {
                 data: data,
-                error: null,
-            });
-        }else{
-            response.status(400).send({
-                data: null,
-                error: `No ocean with name ${name}`,
-            });
+                error: null }
+            }
         }
     }else if(request.method === 'POST'){
         database.addRiver(oceanname, seaname, name);
-        response.status(200).send({
+        output = { code: 200, data: {
             data: database.getRiver(oceanname, seaname, name),
-            error: null,
-        });
+            error: null }
+        }
     }
+
+    response.status(output.code).send(output.data);
 });
