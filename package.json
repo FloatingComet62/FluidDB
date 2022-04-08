@@ -1,0 +1,24 @@
+{
+  "name": "fluiddb",
+  "version": "1.0.0",
+  "description": "Fluid DB is a database which can be self-hosted (NO-SQL)",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "node dist/index.js",
+    "watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FloatingComet62/FluidDB.git"
+  },
+  "keywords": [
+    "database",
+    "nosql"
+  ],
+  "author": "FloatingComet62",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FloatingComet62/FluidDB/issues"
+  },
+  "homepage": "https://github.com/FloatingComet62/FluidDB#readme"
+}
