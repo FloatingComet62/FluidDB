@@ -8,11 +8,9 @@
     * Database > Ocean(clusters) > Sea(collections) > River(documents)
 */
 
-const high = require('./database/high');
-const low = require('./database/low');
+require('./api/api');
 
 const main = async() => {
-    console.log(high.getOcean());
 }
 
 
