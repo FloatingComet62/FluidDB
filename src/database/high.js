@@ -1,6 +1,6 @@
 const { addOcean, getOcean, removeOcean } = require('./structure/ocean');
 const { addSea, getSea, removeSea } = require('./structure/sea');
-const { addRiver, getRiver, removeRiver } = require('./structure/river');
+const { addRiver, getRiver, removeRiver, addWave } = require('./structure/river');
 const low = require('./low');
 
 module.exports = {
@@ -18,5 +18,6 @@ module.exports = {
     removeSea,
     addRiver,
     getRiver,
-    removeRiver
+    removeRiver,
+    addWave
 }
