@@ -25,5 +25,14 @@ module.exports = {
         const data = low.getData();
         data[groupName][seaName][name][waveName] = waveValue;
         low.setData(JSON.stringify(data));
+    },
+    getWave(groupName, seaName, name, waveName){
+        const data = low.getData();
+        return data[groupName][seaName][name][waveName]
+    },
+    removeWave(groupName, seaName, name, waveName){
+        const data = low.getData();
+        delete data[groupName][seaName][name][waveName]
+        low.setData(JSON.stringify(data));
     }
 }
