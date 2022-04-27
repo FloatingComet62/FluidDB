@@ -1,17 +1,17 @@
-const fs = require('fs');
-const dotenv = require('dotenv');
-const crypter = require('../crypter');
+import fs from 'fs';
+import dotenv from 'dotenv';
+import crypter from '../crypter.js';
 dotenv.config();
 
-module.exports = {
+export default {
     getData(){
         const encryptedData = fs.readFileSync('database.txt', 'utf8');
-        const rawData = crypter.cryptr.decrypt(encryptedData);
+        const rawData = crypter.decrypt(encryptedData);
         const data = JSON.parse(rawData);
         return data;
     },
     setData(data){
-        const encryptedData = crypter.cryptr.encrypt(data, process.env.KEY);
+        const encryptedData = crypter.encrypt(data, process.env.KEY);
         fs.writeFileSync('database.txt', encryptedData);
     }
 }

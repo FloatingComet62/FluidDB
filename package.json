@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Fluid DB is a database which can be self-hosted (NO-SQL)",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "dev": "node ."
   },
@@ -24,6 +25,7 @@
     "cryptr": "^6.0.2",
     "dotenv": "^16.0.0",
     "envfile": "^6.17.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.3"
   }
 }

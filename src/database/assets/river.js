@@ -1,6 +1,6 @@
-const low = require('../low');
+import low from '../low.js';
 
-module.exports = {
+export default {
     addRiver(groupName, seaName, name){
         const data = low.getData();
         data[groupName][seaName][name] = {};

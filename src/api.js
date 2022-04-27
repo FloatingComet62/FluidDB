@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 const port = 3000;
-const database = require('../database/high');
+import database from './database/index.js';
 
 app.listen(port, ()=> console.log(`API running on http://127.0.0.1:${port}`));
 
@@ -22,14 +22,14 @@ app.use('/:oceanname?/:seaname?/:rivername?/:wavename?/:value?', (request, respo
     const isGET = request.method === 'GET';
     const isPOST = request.method === 'POST';
     const isDELETE = request.method === 'DELETE';
-    let output  = { code: 400, data: { data: null }};
+    let output  = { code: 404, data: 'Not Found'};
 
-    // /
+    //ANY /
     if(!oceanname && !seaname && !rivername && !wavename && !value){
         output.code = 200;
         output.data = database.getAll();
     
-    // /:oceanname
+    //GET | POST | DELETE /:oceanname
     }else if(oceanname && !seaname && !rivername && !wavename && !value){
         output.code = 200;
         if(isGET){
@@ -42,7 +42,7 @@ app.use('/:oceanname?/:seaname?/:rivername?/:wavename?/:value?', (request, respo
             output.data = 'Done';
         }
 
-    // /:oceanname/:seaname
+    //GET | POST | DELETE /:oceanname/:seaname
     }else if(oceanname && seaname && !rivername && !wavename && !value){
         output.code = 200;
         if(isGET){
@@ -55,7 +55,7 @@ app.use('/:oceanname?/:seaname?/:rivername?/:wavename?/:value?', (request, respo
             output.data = 'Done';
         }
 
-    // /:oceanname/:seaname/:rivername
+    //GET | POST | DELETE /:oceanname/:seaname/:rivername
     }else if(oceanname && seaname && rivername && !wavename && !value){
         output.code = 200;
         if(isGET){
@@ -68,26 +68,25 @@ app.use('/:oceanname?/:seaname?/:rivername?/:wavename?/:value?', (request, respo
             output.data = 'Done';
         }
     
-    // /:oceanname/:seaname/:rivername/:wavename
     }else if(oceanname && seaname && rivername && wavename){
+    //GET /:oceanname/:seaname/:rivername/:wavename
         if(isGET){
             output.code = 200;
             output.data = database.getRiver(oceanname, seaname, rivername)[wavename];
         
-    // /:oceanname/:seaname/:rivername/:wavename/:value        
+    //POST /:oceanname/:seaname/:rivername/:wavename/:value        
         }else if(isPOST){
             if(value){
                 output.code = 200;
                 database.addWave(oceanname, seaname, rivername, wavename, value);
                 output.data = database.getWave(oceanname, seaname, rivername, wavename);
             }
+    //DELETE /:oceanname/:seaname/:rivername/:wavename/
         }else if(isDELETE){
             output.code = 200;
             database.removeWave(oceanname, seaname, rivername, wavename);
             output.data = 'Done';
         }
-    }else{
-        output.code = 404;
     }
 
     response.status(output.code).send(output.data);

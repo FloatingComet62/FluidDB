@@ -8,10 +8,10 @@
     * Database > Ocean(clusters) > Sea(collections) > River(documents)
 */
 
-require('./api/api');
+import './api.js';
 
-const main = async() => {
-}
-
-
-main();
+import DOM from './dom/index.js';
+const database = new DOM(true, 'admin', 'admin');
+await database.reset();
+await database.createOcean('test');
+console.log(await database.getEverything());

@@ -1,13 +1,13 @@
-const Cryptr = require('cryptr');
-const fs = require('fs');
-const dotenv = require('dotenv');
+import Cryptr from 'cryptr';
+import fs from 'fs';
+import dotenv from 'dotenv';
 dotenv.config();
-let cryptr;
+let crypter;
 if(process.env.KEY){
-    cryptr = new Cryptr(process.env.KEY);
+    crypter = new Cryptr(process.env.KEY);
 }else{
     genkey();
-    cryptr = new Cryptr(process.env.KEY);
+    crypter = new Cryptr(process.env.KEY);
 }
 
 function genkey(){
@@ -22,6 +22,4 @@ function genkey(){
     dotenv.config();
 }
 
-module.exports = {
-    cryptr
-};
+export default crypter
