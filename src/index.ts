@@ -1,0 +1,10 @@
+/*
+    TODO userauth
+    TODO api routes
+    TODO database (low.js for low level interaction) (high.js for high level interaction)
+    TODO encrytion(toggleable)
+    TODO dom
+
+    * Ocean(clusters) > Sea(collections) > River(documents)
+*/
+
