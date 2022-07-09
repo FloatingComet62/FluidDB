@@ -1,0 +1,20 @@
+{
+  "name": "fluiddb",
+  "version": "0.0.1",
+  "description": "a no-sql database",
+  "main": "dist/index.js",
+  "repository": "https://github.com/FloatingComet62/FluidDB",
+  "author": "FloatingComet62 <shubh2007rai@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon",
+    "watch": "tsc -w",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "nodemon": "^2.0.19",
+    "typescript": "^4.7.4"
+  }
+}
