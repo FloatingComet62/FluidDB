@@ -17,14 +17,11 @@ function logger(req: Request, res: Response, message: any) {
 }
 
 function endHandler(success: any, message: any, req: Request, res: Response, code: number, systemCode: number) {
-    let outCode = 200
+    let outCode = code
     if (systemCode===1) outCode = 400
     if (systemCode===2) outCode = 500
 
-    if (!success) res.status(outCode)
-    else res.status(code)
-
-    res.json({ success, message, systemCode })
+    res.status(outCode).json({ success, message, systemCode })
     logger(req, res, { success, message, systemCode })
 }
 

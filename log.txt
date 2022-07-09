@@ -1,1 +1,5 @@
 [Sat, 09 Jul 2022 07:57:38 GMT] GET / | 304 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{}},"systemCode":0}
+[Sat, 09 Jul 2022 08:00:22 GMT] POST /ocean/newOcean | 201 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{}},"systemCode":0}
+[Sat, 09 Jul 2022 08:00:41 GMT] POST /sea/newOcean/blackSea | 201 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{}}},"systemCode":0}
+[Sat, 09 Jul 2022 08:00:54 GMT] POST /river/newOcean/blackSea/drop/5ml | 201 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sat, 09 Jul 2022 08:01:25 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
