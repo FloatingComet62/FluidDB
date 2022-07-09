@@ -1,5 +1,4 @@
 import fs from 'fs'
-import path from 'path'
 import { LowResponse } from './types'
 
 
@@ -7,7 +6,7 @@ import { LowResponse } from './types'
 function getData(): LowResponse {
     try {
         const raw = fs.readFileSync(
-            path.join(__dirname, 'data.json'), 
+            'data.json',
             'utf8'
         )
         try { return { success: true, message: JSON.parse(raw) } }
@@ -19,7 +18,7 @@ function setData(data: Object) {
         const parsed = JSON.stringify(data)
         try {
             fs.writeFileSync(
-                path.join(__dirname, 'data.json'),
+                'data.json',
                 parsed,
                 { encoding: 'utf-8' }
             )

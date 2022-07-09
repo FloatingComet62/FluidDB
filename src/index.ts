@@ -1,16 +1,17 @@
 import express, { Request, Response } from 'express'
 import high from './database/high'
 import { config } from 'dotenv'
+import fs from 'fs'
 
 const app = express()
 config()
-if(!process.env.PORT) process.env.PORT = '8080'
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || '8080', () => {
     console.log(`Server is running on port ${process.env.PORT}`)
 })
 function logger(req: Request, res: Response, message: any) {
-    console.log(`${req.method} ${req.url} : ${res.statusCode} ${JSON.stringify(message)}`)
+    const log = `${req.method} ${req.url} : ${res.statusCode} ${JSON.stringify(message)}`
+    fs.appendFileSync('log.txt', log + '\n')
 }
 
 function endHandler(success: any, message: any, req: Request, res: Response, code: number, systemCode: number) {

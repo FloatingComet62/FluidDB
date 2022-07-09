@@ -1,0 +1,8 @@
+GET / : 304 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}}},"systemCode":0}
+GET / : 304 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}}},"systemCode":0}
+GET / : 304 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}}},"systemCode":0}
+GET /sea/Hello/FromAPI : 200 {"success":true,"message":{"test":"nice","tst":"nice"},"systemCode":0}
+GET /river/Hello/FromAPI/test : 200 {"success":true,"message":"nice","systemCode":0}
+GET / : 304 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}}},"systemCode":0}
+GET / : 304 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}}},"systemCode":0}
+POST /ocean/LOL : 201 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{}},"systemCode":0}
