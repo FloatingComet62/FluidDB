@@ -10,7 +10,9 @@ app.listen(process.env.PORT || '8080', () => {
     console.log(`Server is running on port ${process.env.PORT}`)
 })
 function logger(req: Request, res: Response, message: any) {
-    const log = `${req.method} ${req.url} : ${res.statusCode} ${JSON.stringify(message)}`
+    const time = new Date().toUTCString()
+    const log = `[${time}] ${req.method} ${req.url} | ${res.statusCode} ${JSON.stringify(message)}`
+    console.log(log)
     fs.appendFileSync('log.txt', log + '\n')
 }
 
