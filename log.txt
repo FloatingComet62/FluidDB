@@ -3,3 +3,16 @@
 [Sat, 09 Jul 2022 08:00:41 GMT] POST /sea/newOcean/blackSea | 201 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{}}},"systemCode":0}
 [Sat, 09 Jul 2022 08:00:54 GMT] POST /river/newOcean/blackSea/drop/5ml | 201 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
 [Sat, 09 Jul 2022 08:01:25 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 14:58:22 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 14:58:45 GMT] GET / | 304 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 15:02:41 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 15:03:45 GMT] GET /ocean/LOL | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 15:08:32 GMT] GET /ocean/LOL | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 15:17:01 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"LOL":{},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 15:17:43 GMT] DELETE /ocean/LOL | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"Test":{"hmm":{}},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 15:17:49 GMT] DELETE /ocean/Test | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 15:17:52 GMT] GET /ocean/Test | 400 {"success":false,"message":"Ocean Test does not exist","systemCode":1}
+[Sun, 10 Jul 2022 15:17:57 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice","tst":"nice"}},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 15:18:16 GMT] DELETE /river/Hello/FromAPI/tst | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
+[Sun, 10 Jul 2022 15:18:43 GMT] DELETE /sea/newOcean/blackSea/ | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{}},"systemCode":0}
+[Sun, 10 Jul 2022 15:18:52 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{}},"systemCode":0}
