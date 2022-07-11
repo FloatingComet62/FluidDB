@@ -1,12 +1,13 @@
+
 import fs from 'fs'
-import { LowResponse } from '../types'
+import { userResponse } from '../types'
 
 
 
-function getData(): LowResponse {
+function getData(): userResponse {
     try {
         const raw = fs.readFileSync(
-            'data.json',
+            'user.json',
             'utf8'
         )
         try { return { success: true, message: JSON.parse(raw) } }
@@ -18,7 +19,7 @@ function setData(data: Object) {
         const parsed = JSON.stringify(data)
         try {
             fs.writeFileSync(
-                'data.json',
+                'user.json',
                 parsed,
                 { encoding: 'utf-8' }
             )

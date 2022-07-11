@@ -29,6 +29,14 @@ export type HighGetResponse = {
     code: number
 }
 
+export type userResponse = {
+    success: true
+    message: { [key: string]: string; }
+} | {
+    success: false
+    message: string
+}
+
 type Database = {
     [key: string]: {
         [key: string]: {

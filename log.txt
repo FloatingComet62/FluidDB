@@ -16,3 +16,60 @@
 [Sun, 10 Jul 2022 15:18:16 GMT] DELETE /river/Hello/FromAPI/tst | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{"blackSea":{"drop":"5ml"}}},"systemCode":0}
 [Sun, 10 Jul 2022 15:18:43 GMT] DELETE /sea/newOcean/blackSea/ | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{}},"systemCode":0}
 [Sun, 10 Jul 2022 15:18:52 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{}},"systemCode":0}
+[Sun, 10 Jul 2022 16:13:36 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{}},"systemCode":0}
+[Sun, 10 Jul 2022 16:17:38 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{}},"systemCode":0}
+[Sun, 10 Jul 2022 16:18:48 GMT] GET / | 200 {"success":true,"message":{"Hello":{"FromAPI":{"test":"nice"}},"newOcean":{}},"systemCode":0}
+[Sun, 10 Jul 2022 16:19:07 GMT] POST /ocean/Hello | 201 {"success":true,"message":{"Hello":{},"newOcean":{}},"systemCode":0}
+[Sun, 10 Jul 2022 16:20:28 GMT] POST /ocean/Hello | 201 {"success":true,"message":{"Hello":{},"newOcean":{}},"systemCode":0}
+[Sun, 10 Jul 2022 16:20:34 GMT] POST /ocean/Hello | 201 {"success":true,"message":{"Hello":{},"newOcean":{}},"systemCode":0}
+[Sun, 10 Jul 2022 16:21:14 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:24:28 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:25:03 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:29:42 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:29:43 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:30:47 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:34:11 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:34:54 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:34:54 GMT] GET /sea/Hello/World | 400 {"success":false,"message":"Sea World does not exist","systemCode":1}
+[Sun, 10 Jul 2022 16:40:25 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:40:25 GMT] GET /sea/Hello/World | 400 {"success":false,"message":"Sea World does not exist","systemCode":1}
+[Sun, 10 Jul 2022 16:40:35 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:40:35 GMT] GET /sea/Hello/World | 400 {"success":false,"message":"Sea World does not exist","systemCode":1}
+[Sun, 10 Jul 2022 16:42:57 GMT] GET /ocean/Hello | 200 {"success":true,"message":{},"systemCode":0}
+[Sun, 10 Jul 2022 16:42:57 GMT] GET /sea/Hello/World | 400 {"success":false,"message":"Sea World does not exist","systemCode":1}
+[Sun, 10 Jul 2022 16:46:33 GMT] POST /ocean/BRUH | 201 {"success":true,"message":{"Hello":{},"newOcean":{},"BRUH":{}},"systemCode":0}
+[Sun, 10 Jul 2022 16:46:33 GMT] POST /sea/BRUH/BRUH2 | 201 {"success":true,"message":{"Hello":{},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:47:06 GMT] GET / | 200 {"success":true,"message":{"Hello":{},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:47:12 GMT] GET / | 200 {"success":true,"message":{"Hello":{},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:52:04 GMT] GET / | 200 {"success":true,"message":{"Hello":{},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:52:18 GMT] POST /sea/Hello/Bruh | 201 {"success":true,"message":{"Hello":{"Bruh":{}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:52:31 GMT] POST /river/Hello/Bruh/nice/you | 201 {"success":true,"message":{"Hello":{"Bruh":{"nice":"you"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:52:34 GMT] PUT /river/Hello/Bruh/nice/you | 200 {"success":true,"message":{"Hello":{"Bruh":{"nice":"you"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:52:37 GMT] PUT /river/Hello/Bruh/nice/youu | 200 {"success":true,"message":{"Hello":{"Bruh":{"nice":"youu"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:54:18 GMT] GET /river/Hello/Bruh/nice | 200 {"success":true,"message":"youu","systemCode":0}
+[Sun, 10 Jul 2022 16:56:50 GMT] GET / | 200 {"success":true,"message":{"Hello":{"Bruh":{"nice":"youu"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:56:52 GMT] DELETE /river/Hello/Bruh/nice | 200 {"success":true,"message":{"Hello":{"Bruh":{}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:56:59 GMT] GET /river/Hello/Bruh/nice | 400 {"success":false,"message":"River nice does not exist","systemCode":1}
+[Sun, 10 Jul 2022 16:57:05 GMT] POST /river/Hello/Bruh/nice/lol | 201 {"success":true,"message":{"Hello":{"Bruh":{"nice":"lol"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Sun, 10 Jul 2022 16:57:10 GMT] GET /river/Hello/Bruh/nice | 200 {"success":true,"message":"lol","systemCode":0}
+[Mon, 11 Jul 2022 15:25:59 GMT] GET / | 200 {"success":true,"message":{"Hello":{"Bruh":{"nice":"lol"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:25 GMT] GET /ocean/Hello | 200 {"success":true,"message":{"Bruh":{"nice":"lol"}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:25 GMT] POST /sea/Hello/Bruh | 201 {"success":true,"message":{"Hello":{"Bruh":{}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:25 GMT] POST /river/Hello/Bruh/YOO/SUCK%20IT!!! | 201 {"success":true,"message":{"Hello":{"Bruh":{"YOO":"SUCK IT!!!"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:26 GMT] GET /ocean/Hello | 200 {"success":true,"message":{"Bruh":{"YOO":"SUCK IT!!!"}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:26 GMT] POST /sea/Hello/Bruh | 201 {"success":true,"message":{"Hello":{"Bruh":{}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:26 GMT] POST /river/Hello/Bruh/YOO/SUCK%20IT!!! | 201 {"success":true,"message":{"Hello":{"Bruh":{"YOO":"SUCK IT!!!"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:26 GMT] GET / | 200 {"success":true,"message":{"Hello":{"Bruh":{"YOO":"SUCK IT!!!"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:42 GMT] GET /ocean/Hello | 200 {"success":true,"message":{"Bruh":{"YOO":"SUCK IT!!!"}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:42 GMT] POST /sea/Hello/Bruh | 201 {"success":true,"message":{"Hello":{"Bruh":{}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:42 GMT] POST /river/Hello/Bruh/YOO/SUCK%20IT!!! | 201 {"success":true,"message":{"Hello":{"Bruh":{"YOO":"SUCK IT!!!"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}
+[Mon, 11 Jul 2022 15:29:42 GMT] GET /river/Hello/Bruh/YOO | 200 {"success":true,"message":"SUCK IT!!!","systemCode":0}
+[Mon, 11 Jul 2022 15:30:09 GMT] GET /ocean/Hello | 200 {"success":true,"message":{"Bruh":{"YOO":"SUCK IT!!!"}},"systemCode":0}
+[Mon, 11 Jul 2022 15:30:09 GMT] GET /sea/Hello/Bruh | 200 {"success":true,"message":{"YOO":"SUCK IT!!!"},"systemCode":0}
+[Mon, 11 Jul 2022 15:30:09 GMT] GET /river/Hello/Bruh/YOO | 200 {"success":true,"message":"SUCK IT!!!","systemCode":0}
+[Mon, 11 Jul 2022 17:33:50 GMT] DELETE /user/root/fluid | 500 {"success":false,"message":"Username must not be root","systemCode":2}
+[Mon, 11 Jul 2022 17:34:12 GMT] DELETE /user/roo/fluid | 500 {"success":false,"message":"User does not exist","systemCode":2}
+[Mon, 11 Jul 2022 17:35:41 GMT] DELETE /user/roo/fluid | 400 {"success":false,"message":"User does not exist","systemCode":1}
+[Mon, 11 Jul 2022 17:35:58 GMT] POST /user/roo/fluid/fluid | 201 {"success":true,"message":"User added","systemCode":0}
+[Mon, 11 Jul 2022 17:36:10 GMT] DELETE /user/roo/fluid | 202 {"success":true,"message":"User deleted","systemCode":0}
+[Mon, 11 Jul 2022 17:36:17 GMT] GET / | 200 {"success":true,"message":{"Hello":{"Bruh":{"YOO":"SUCK IT!!!"}},"newOcean":{},"BRUH":{"BRUH2":{}}},"systemCode":0}

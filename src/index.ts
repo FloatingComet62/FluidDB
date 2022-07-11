@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
-import high from './database/high'
+import database from './database/high'
+import user from './user/high'
 import { config } from 'dotenv'
 import fs from 'fs'
 
@@ -26,47 +27,56 @@ function endHandler(success: any, message: any, req: Request, res: Response, cod
 }
 
 app.get('/',(req, res) => {
-    const { success, message, code } = high.getEveryThing()
+    const { success, message, code } = database.getEveryThing()
     endHandler(success, message, req, res, 200, code)
+})
+
+app.post('/user/:name/:password/:rootPassword', (req, res) => {
+    const { success, message } = user.addUser(req.params.name, req.params.password, req.params.rootPassword)
+    endHandler(success, message, req, res, 201, success ? 0 : 1)
+})
+app.delete('/user/:name/:rootPassword', (req, res) => {
+    const { success, message } = user.deleteUser(req.params.name, req.params.rootPassword)
+    endHandler(success, message, req, res, 202, success ? 0 : 1)
 })
 
 app.get('/ocean/:oceanName', (req, res) => {
-    const { success, message, code } = high.getOcean(req.params.oceanName)
+    const { success, message, code } = database.getOcean(req.params.oceanName)
     endHandler(success, message, req, res, 200, code)
 })
 app.post('/ocean/:oceanName', (req, res) => {
-    const { success, message, code } = high.createOcean(req.params.oceanName)
+    const { success, message, code } = database.createOcean(req.params.oceanName)
     endHandler(success, message, req, res, 201, code)
 })
 app.delete('/ocean/:oceanName', (req, res) => {
-    const { success, message, code } = high.deleteOcean(req.params.oceanName)
-    endHandler(success, message, req, res, 200, code)
+    const { success, message, code } = database.deleteOcean(req.params.oceanName)
+    endHandler(success, message, req, res, 202, code)
 })
 
 app.get('/sea/:oceanName/:seaName', (req, res) => {
-    const { success, message, code } = high.getSea(
+    const { success, message, code } = database.getSea(
         req.params.oceanName,
         req.params.seaName
     )
     endHandler(success, message, req, res, 200, code)
 })
 app.post('/sea/:oceanName/:seaName', (req, res) => {
-    const { success, message, code } = high.createSea(
+    const { success, message, code } = database.createSea(
         req.params.oceanName,
         req.params.seaName
     )
     endHandler(success, message, req, res, 201, code)
 })
 app.delete('/sea/:oceanName/:seaName', (req, res) => {
-    const { success, message, code } = high.deleteSea(
+    const { success, message, code } = database.deleteSea(
         req.params.oceanName,
         req.params.seaName
     )
-    endHandler(success, message, req, res, 200, code)
+    endHandler(success, message, req, res, 202, code)
 })
 
 app.get('/river/:oceanName/:seaName/:riverName', (req, res) => {
-    const { success, message, code } = high.getRiver(
+    const { success, message, code } = database.getRiver(
         req.params.oceanName,
         req.params.seaName,
         req.params.riverName
@@ -74,7 +84,7 @@ app.get('/river/:oceanName/:seaName/:riverName', (req, res) => {
     endHandler(success, message, req, res, 200, code)
 })
 app.post('/river/:oceanName/:seaName/:riverName/:value', (req, res) => {
-    const { success, message, code } = high.createRiver(
+    const { success, message, code } = database.createRiver(
         req.params.oceanName,
         req.params.seaName,
         req.params.riverName,
@@ -83,15 +93,15 @@ app.post('/river/:oceanName/:seaName/:riverName/:value', (req, res) => {
     endHandler(success, message, req, res, 201, code)
 })
 app.delete('/river/:oceanName/:seaName/:riverName', (req, res) => {
-    const { success, message, code } = high.deleteRiver(
+    const { success, message, code } = database.deleteRiver(
         req.params.oceanName,
         req.params.seaName,
         req.params.riverName
     )
-    endHandler(success, message, req, res, 200, code)
+    endHandler(success, message, req, res, 202, code)
 })
 app.put('/river/:oceanName/:seaName/:riverName/:value', (req, res) => {
-    const { success, message, code } = high.updateRiver(
+    const { success, message, code } = database.updateRiver(
         req.params.oceanName,
         req.params.seaName,
         req.params.riverName,

@@ -1,5 +1,5 @@
 import low from './low'
-import { HighGetResponse, HighResponse } from './types'
+import { HighGetResponse, HighResponse } from '../types'
 
 function getEveryThing(): HighResponse {
     const { success, message } = low.getData()
