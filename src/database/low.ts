@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { LowResponse } from './types'
+import { LowResponse } from '../types'
 
 
 
