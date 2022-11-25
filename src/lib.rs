@@ -1,6 +1,6 @@
-pub fn type_name<T>(_: &T) -> &'static str {
-    std::any::type_name::<T>()
-}
+use actix_web::{HttpResponse, Responder};
+use json::JsonValue;
+use json::stringify;
 
 pub enum Error {
     FailedToParse,
@@ -11,10 +11,6 @@ pub enum Error {
     SeaNotExist,
     RiverNotExist,
 }
-
-use actix_web::{HttpResponse, Responder};
-use json::JsonValue;
-use json::stringify;
 
 pub fn res_handle_json(response: Result<JsonValue, Error>) -> impl Responder {
     match response {
