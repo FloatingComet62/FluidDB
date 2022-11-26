@@ -1,26 +1,52 @@
-use actix_web::{HttpResponse, Responder};
-use json::JsonValue;
-use json::stringify;
+use actix_web::{
+    HttpResponse,
+    Responder,
+    http::{
+        StatusCode,
+        header::ContentType,
+    },
+};
+use json::{JsonValue, stringify};
 
 pub enum Error {
     FailedToParse,
     FailedToSave,
     FailedToOpen,
     FailedToUpdate,
+
     OceanNotExist,
     SeaNotExist,
     RiverNotExist,
 }
 
+struct ErrorData {
+    code: StatusCode,
+    msg: String,
+}
+
+fn error_data(e: Error) -> ErrorData {
+    let mut ise = ErrorData { code: StatusCode::INTERNAL_SERVER_ERROR, msg: String::new() };
+    let mut br = ErrorData { code: StatusCode::BAD_REQUEST, msg: String::new() };
+    match e {
+        Error::FailedToParse => { ise.msg = String::from("Failed to parse");br },
+        Error::FailedToSave => { ise.msg = String::from("Failed to save");br },
+        Error::FailedToOpen => { ise.msg = String::from("Failed to open");br },
+        Error::FailedToUpdate => { ise.msg = String::from("Failed to update");br },
+
+        Error::OceanNotExist => { br.msg = String::from("Ocean doesn't exist");br },
+        Error::SeaNotExist =>  { br.msg = String::from("Sea doesn't exist");br },
+        Error::RiverNotExist => { br.msg = String::from("River doesn't exist");br },
+    }
+}
+
 pub fn res_handle_json(response: Result<JsonValue, Error>) -> impl Responder {
     match response {
-        Err(Error::FailedToSave) => HttpResponse::Ok().body("Failed to save the database"),
-        Err(Error::FailedToOpen) => HttpResponse::Ok().body("Failed to open the database"),
-        Err(Error::FailedToParse) => HttpResponse::Ok().body("Failed to parse the database"),
-        Err(Error::FailedToUpdate) => HttpResponse::Ok().body("Failed to update the database"),
-        Err(Error::OceanNotExist) => HttpResponse::Ok().body("Ocean doesn't exist"),
-        Err(Error::SeaNotExist) => HttpResponse::Ok().body("Sea doesn't exist"),
-        Err(Error::RiverNotExist) => HttpResponse::Ok().body("River doesn't exist"),
+        Err(e) => {
+            let data = error_data(e);
+            HttpResponse::build(data.code)
+                .insert_header(ContentType::plaintext())
+                .body(data.msg)
+        }
         Ok(data) => {
             HttpResponse::Ok().body(stringify(data))
         }
@@ -28,13 +54,12 @@ pub fn res_handle_json(response: Result<JsonValue, Error>) -> impl Responder {
 }
 pub fn res_handle_null(response: Result<(), Error>) -> impl Responder {
     match response {
-        Err(Error::FailedToSave) => HttpResponse::Ok().body("Failed to save the database"),
-        Err(Error::FailedToOpen) => HttpResponse::Ok().body("Failed to open the database"),
-        Err(Error::FailedToParse) => HttpResponse::Ok().body("Failed to parse the database"),
-        Err(Error::FailedToUpdate) => HttpResponse::Ok().body("Failed to update the database"),
-        Err(Error::OceanNotExist) => HttpResponse::Ok().body("Ocean doesn't exist"),
-        Err(Error::SeaNotExist) => HttpResponse::Ok().body("Sea doesn't exist"),
-        Err(Error::RiverNotExist) => HttpResponse::Ok().body("River doesn't exist"),
+        Err(e) => {
+            let data = error_data(e);
+            HttpResponse::build(data.code)
+                .insert_header(ContentType::plaintext())
+                .body(data.msg)
+        }
         Ok(_) => {
             HttpResponse::Ok().body("")
         }
