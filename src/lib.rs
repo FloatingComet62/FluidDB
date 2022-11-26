@@ -39,7 +39,7 @@ fn error_data(e: Error) -> ErrorData {
     }
 }
 
-pub fn res_handle_json(response: Result<JsonValue, Error>) -> impl Responder {
+pub fn res_handler(response: Result<JsonValue, Error>) -> impl Responder {
     match response {
         Err(e) => {
             let data = error_data(e);
@@ -47,21 +47,6 @@ pub fn res_handle_json(response: Result<JsonValue, Error>) -> impl Responder {
                 .insert_header(ContentType::plaintext())
                 .body(data.msg)
         }
-        Ok(data) => {
-            HttpResponse::Ok().body(stringify(data))
-        }
-    }
-}
-pub fn res_handle_null(response: Result<(), Error>) -> impl Responder {
-    match response {
-        Err(e) => {
-            let data = error_data(e);
-            HttpResponse::build(data.code)
-                .insert_header(ContentType::plaintext())
-                .body(data.msg)
-        }
-        Ok(_) => {
-            HttpResponse::Ok().body("")
-        }
+        Ok(data) => HttpResponse::Ok().body(stringify(data))
     }
 }

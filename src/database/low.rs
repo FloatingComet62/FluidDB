@@ -17,11 +17,11 @@ pub fn get_data() -> Result<JsonValue, Error> {
     }
 }
 
-pub fn set_data(obj: JsonValue) -> Result<(), Error> {
+pub fn set_data(obj: JsonValue) -> Result<JsonValue, Error> {
     let data = stringify(obj);
     let response = write("data.json", data.as_bytes());
     match response {
         Err(_) => Err(Error::FailedToSave),
-        Ok(_) => Ok(()),
+        Ok(_) => Ok(JsonValue::Null),
     }
 }

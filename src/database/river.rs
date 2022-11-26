@@ -1,6 +1,6 @@
 use super::low::{get_data, set_data};
 use fluid_api::Error;
-use json::{JsonValue, parse};
+use json::JsonValue;
 
 pub fn get_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Result<JsonValue, Error> {
     match get_data() {
@@ -16,14 +16,12 @@ pub fn get_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Result<J
                 return Err(Error::RiverNotExist);
             }
 
-            Ok(parse(data[ocean_name][sea_name][river_name].to_string().as_str()).unwrap())
-            // We can safely unwrap because we are sure it's a valid json
-            // We also convert to string and then to &str to avoid the option type
+            Ok(JsonValue::String(data[ocean_name][sea_name][river_name].to_string()))
         }
     }
 }
 
-pub fn create_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Result<(), Error> {
+pub fn create_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Result<JsonValue, Error> {
     match get_data() {
         Err(e) => Err(e),
         Ok(mut data) => {
@@ -38,7 +36,7 @@ pub fn create_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Resul
                 Ok(()) => {
                     match set_data(data) {
                         Err(e) => Err(e),
-                        Ok(()) => Ok(()),
+                        Ok(_e) => Ok(JsonValue::Null),
                     }
                 }
             }
@@ -46,7 +44,7 @@ pub fn create_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Resul
     }
 }
 
-pub fn delete_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Result<(), Error> {
+pub fn delete_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Result<JsonValue, Error> {
     match get_data() {
         Err(e) => Err(e),
         Ok(mut data) => {
@@ -64,7 +62,7 @@ pub fn delete_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Resul
                 _ => {
                     match set_data(data) {
                         Err(e) => Err(e),
-                        Ok(()) => Ok(()),
+                        Ok(_e) => Ok(JsonValue::Null),
                     }
                 }
             }
@@ -72,7 +70,7 @@ pub fn delete_river(ocean_name: &str, sea_name: &str, river_name: &str) -> Resul
     }
 }
 
-pub fn update_river(ocean_name: &str, sea_name: &str, river_name: &str, value: &str) -> Result<(), Error> {
+pub fn update_river(ocean_name: &str, sea_name: &str, river_name: &str, value: &str) -> Result<JsonValue, Error> {
     match get_data() {
         Err(e) => Err(e),
         Ok(mut data) => {
@@ -90,7 +88,7 @@ pub fn update_river(ocean_name: &str, sea_name: &str, river_name: &str, value: &
                 Ok(()) => {
                     match set_data(data) {
                         Err(e) => Err(e),
-                        Ok(()) => Ok(()),
+                        Ok(_e) => Ok(JsonValue::Null),
                     }
                 }
             }

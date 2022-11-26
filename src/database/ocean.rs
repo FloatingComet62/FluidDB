@@ -9,14 +9,16 @@ pub fn get_ocean(ocean_name: &str) -> Result<JsonValue, Error> {
             if data[ocean_name].is_null() {
                 return Err(Error::OceanNotExist);
             }
-            Ok(parse(data[ocean_name].to_string().as_str()).unwrap())
-            // We can safely unwrap because we are sure it's a valid json
+            match parse(data[ocean_name].to_string().as_str()) {
+                Err(_) => Err(Error::FailedToParse),
+                Ok(data) => Ok(data)
+            }
             // We also convert to string and then to &str to avoid the option type
         }
     }
 }
 
-pub fn create_ocean(ocean_name: &str) -> Result<(), Error> {
+pub fn create_ocean(ocean_name: &str) -> Result<JsonValue, Error> {
     match get_data() {
         Err(e) => Err(e),
         Ok(mut data) => {
@@ -25,7 +27,7 @@ pub fn create_ocean(ocean_name: &str) -> Result<(), Error> {
                 Ok(()) => {
                     match set_data(data) {
                         Err(e) => Err(e),
-                        Ok(()) => Ok(()),
+                        Ok(_e) => Ok(JsonValue::Null),
                     }
                 }
             }
@@ -34,7 +36,7 @@ pub fn create_ocean(ocean_name: &str) -> Result<(), Error> {
     }
 }
 
-pub fn delete_ocean(ocean_name: &str) -> Result<(), Error> {
+pub fn delete_ocean(ocean_name: &str) -> Result<JsonValue, Error> {
     match get_data() {
         Err(e) => Err(e),
         Ok(mut data) => {
@@ -46,7 +48,7 @@ pub fn delete_ocean(ocean_name: &str) -> Result<(), Error> {
                 _ => {
                     match set_data(data) {
                         Err(e) => Err(e),
-                        Ok(()) => Ok(()),
+                        Ok(_e) => Ok(JsonValue::Null),
                     }
                 }
             }
