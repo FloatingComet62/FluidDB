@@ -1,7 +1,6 @@
 use actix_web::{HttpServer, App};
 
-mod database;
-mod routes;
+use fluid_api::routes::{home, ocean, sea, river};
 
 const PORT: u16 = 8080;
 
@@ -9,20 +8,20 @@ const PORT: u16 = 8080;
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
-            .service(routes::home)
+            .service(home)
 
-            .service(routes::ocean::get_ocean)
-            .service(routes::ocean::post_ocean)
-            .service(routes::ocean::delete_ocean)
+            .service(ocean::get_ocean)
+            .service(ocean::post_ocean)
+            .service(ocean::delete_ocean)
 
-            .service(routes::sea::get_sea)
-            .service(routes::sea::post_sea)
-            .service(routes::sea::delete_sea)
+            .service(sea::get_sea)
+            .service(sea::post_sea)
+            .service(sea::delete_sea)
 
-            .service(routes::river::get_river)
-            .service(routes::river::post_river)
-            .service(routes::river::delete_river)
-            .service(routes::river::update_river)
+            .service(river::get_river)
+            .service(river::post_river)
+            .service(river::delete_river)
+            .service(river::update_river)
     })
     .bind(("127.0.0.1", PORT))?
     .run()

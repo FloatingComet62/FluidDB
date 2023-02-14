@@ -1,5 +1,5 @@
 use json::{JsonValue, object};
-use fluid_api::Error;
+use super::Error;
 
 pub mod low;
 

@@ -1,19 +1,19 @@
 use std::fs::{read_to_string, write};
-use fluid_api::Error;
+use super::Error;
 use json::{parse, stringify, JsonValue};
 
 pub fn get_data() -> Result<JsonValue, Error> {
     let data = read_to_string("data.json");
     match data {
         Err(_) => Err(Error::FailedToOpen),
-        Ok(safe) => {
-            let parsed = parse(safe.as_str());
+        Ok(safe) => parser(&safe),
+    }
+}
 
-            match parsed {
-                Err(_) => Err(Error::FailedToParse),
-                Ok(safeparsed) => Ok(safeparsed),
-            }
-        },
+fn parser(safe: &str) -> Result<JsonValue, Error> {
+    match parse(safe) {
+        Err(_) => Err(Error::FailedToParse),
+        Ok(safeparsed) => Ok(safeparsed),
     }
 }
 

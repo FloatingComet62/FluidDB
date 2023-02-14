@@ -1,5 +1,5 @@
 use actix_web::{Responder, web::Path, get, post, delete};
-use fluid_api::res_handler;
+use super::res_handler;
 use super::super::database::sea;
 
 #[get("/sea/{ocean_name}/{sea_name}")]

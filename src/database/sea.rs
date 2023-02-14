@@ -1,65 +1,37 @@
-use super::low;
-use fluid_api::Error;
+use super::low::get_data;
+use super::Error;
+use super::super::{handle_set, null_check_sea, null_check_ocean, match_hell_fix};
 use json::{JsonValue, parse};
 
 pub fn get_sea(ocean_name: &str, sea_name: &str) -> Result<JsonValue, Error> {
-    match low::get_data() {
-        Err(e) => Err(e),
-        Ok(data) => {
-            if data[ocean_name].is_null() {
-                return Err(Error::OceanNotExist);
-            }
-            if data[ocean_name][sea_name].is_null() {
-                return Err(Error::SeaNotExist);
-            }
-            match parse(data[ocean_name][sea_name].to_string().as_str()) {
+    match_hell_fix!(get_data(), {
+        match_hell_fix!(null_check_sea(&data, &ocean_name, &sea_name), {
+            match parse(&sea) {
                 Err(_) => Err(Error::FailedToParse),
                 Ok(data) => Ok(data)
             }
-            // We also convert to string and then to &str to avoid the option type
-        }
-    }
+        }, sea)
+    }, data)
 }
 
 pub fn create_sea(ocean_name: &str, sea_name: &str) -> Result<JsonValue, Error> {
-    match low::get_data() {
-        Err(e) => Err(e),
-        Ok(mut data) => {
-            if data[ocean_name].is_null() {
-                return Err(Error::OceanNotExist);
-            }
+    match_hell_fix!(get_data(), {
+        match_hell_fix!(null_check_ocean(&data, &ocean_name), {
             match data[ocean_name].insert(sea_name, json::object! {}) {
                 Err(_) => Err(Error::FailedToUpdate),
-                Ok(()) => {
-                    match low::set_data(data) {
-                        Err(e) => Err(e),
-                        Ok(_e) => Ok(JsonValue::Null),
-                    }
-                }
+                Ok(_) => handle_set(data)
             }
-        }
-    }
+        }, _d)
+    }, mut data)
 }
 
 pub fn delete_sea(ocean_name: &str, sea_name: &str) -> Result<JsonValue, Error> {
-    match low::get_data() {
-        Err(e) => Err(e),
-        Ok(mut data) => {
-            if data[ocean_name].is_null() {
-                return Err(Error::OceanNotExist);
-            }
-            if data[ocean_name][sea_name].is_null() {
-                return Err(Error::SeaNotExist);
-            }
+    match_hell_fix!(get_data(), {
+        match_hell_fix!(null_check_sea(&data, &ocean_name, &sea_name), {
             match data[ocean_name].remove(sea_name) {
                 JsonValue::Null => Err(Error::FailedToUpdate),
-                _ => {
-                    match low::set_data(data) {
-                        Err(e) => Err(e),
-                        Ok(_e) => Ok(JsonValue::Null),
-                    }
-                }
+                _ => handle_set(data)
             }
-        }
-    }
+        }, _d)
+    }, mut data)
 }

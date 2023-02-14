@@ -1,5 +1,5 @@
 use actix_web::{Responder, get};
-use fluid_api::res_handler;
+use super::res_handler;
 use super::database;
 
 pub mod ocean;
