@@ -4,7 +4,7 @@ use actix_web::{
     http::{
         StatusCode,
         header::ContentType,
-    }, web::Json,
+    },
 };
 use json::{JsonValue, stringify};
 
@@ -87,16 +87,4 @@ pub fn null_check_ocean(data: &JsonValue, ocean_name: &str) -> Result<String, Er
         return Err(Error::OceanNotExist);
     }
     return Ok(data[ocean_name].to_string());
-}
-
-#[macro_export]
-macro_rules! match_hell_fix {
-    ($to_match: expr, $ok_statement: block, $( $var: ident ) *) => {
-        match $to_match {
-            Err(e) => Err(e),
-            Ok($($var )*) => {
-                $ok_statement
-            }
-        }
-    };
 }

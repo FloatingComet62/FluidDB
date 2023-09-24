@@ -1,5 +1,4 @@
 use actix_web::{HttpServer, App};
-
 use fluid_api::routes::{home, ocean, sea, river};
 
 const PORT: u16 = 8080;
